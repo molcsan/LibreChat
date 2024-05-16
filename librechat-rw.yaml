@@ -3,12 +3,29 @@ version: 1.0.9
 cache: true
 
 registration:
+  socialLogins: ['github', 'google']
   allowedDomains:
     - "dajanarodriguez.com"
     - "dajanarodriguez.sk"
 
 endpoints:
+  assistants:
+   disableBuilder: false
+   pollIntervalMs: 750
+   timeoutMs: 180000
+   supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
+   retrievalModels: ["gpt-4o"]
+   capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
+
   custom:
+    - name: "OpenAi"
+      apiKey: "${OPENAI_API_KEY}"
+      baseURL: "https://api.openai.com/v1/"
+      models:
+        default: ["gpt-4-turbo", "gpt-4o", "gpt-3.5-turbo"]
+        fetch: false
+      modelDisplayLabel: "OpenAI"
+
     - name: "Perplexity"
       apiKey: "${PERPLEXITY_API_KEY}"
       baseURL: "https://api.perplexity.ai/"
@@ -30,3 +47,58 @@ endpoints:
       forcePrompt: false
       dropParams: [ "stop", "frequency_penalty" ]
       modelDisplayLabel: "Perplexity"
+
+    - name: 'OpenRouter'
+      apiKey: '${OPENROUTER_KEY}'
+      baseURL: 'https://openrouter.ai/api/v1'
+      models:
+        default: [
+          'nousresearch/nous-capybara-7b:free',
+          'mistralai/mistral-7b-instruct:free',
+          'openchat/openchat-7b:free',
+          'gryphe/mythomist-7b:free',
+          'undi95/toppy-m-7b:free',
+          'openrouter/cinematika-7b:free',
+          'google/gemma-7b-it:free',
+          'meta-llama/llama-3-8b-instruct:free']
+        fetch: false
+      titleConvo: true
+      titleModel: 'meta-llama/llama-3-8b-instruct:free'
+      dropParams: [ 'stop' ]
+      modelDisplayLabel: 'OpenRouter'
+
+    - name: "ShuttleAI"
+      apiKey: "${SHUTTLEAI_API_KEY}"
+      baseURL: "https://api.shuttleai.app/v1"
+      models:
+        default: [
+          "gpt-4-turbo-bing", "gpt-4-bing", 'wizardlm-2-8x22b', 'wizardlm-2-70b', 'dolphin-2.6-mixtral-8x7b', 'mixtral-8x22b-instruct-v0.1', 'mixtral-8x7b-instruct-v0.1', 'nous-hermes-2-mixtral-8x7b'
+        ]
+        fetch: false
+      titleConvo: true
+      titleModel: "shuttle-2-turbo"
+      summarize: false
+      summaryModel: "shuttle-2-turbo"
+      forcePrompt: false
+      modelDisplayLabel: "ShuttleAI"
+      dropParams: [ "user" ]
+
+fileConfig:
+ endpoints:
+   assistants:
+     fileLimit: 5
+     fileSizeLimit: 10  # Maximum size for an individual file in MB
+     totalSizeLimit: 20  # Maximum total size for all files in a single request in MB
+     supportedMimeTypes:
+       - "image/.*"
+       - "application/pdf"
+       - "text/plain"
+       - "text/csv"
+       - "application/json"
+       - "application/xml"
+   openAI:
+     disabled: false
+   default:
+     totalSizeLimit: 20
+ serverFileSizeLimit: 100  # Global server file size limit in MB
+ avatarSizeLimit: 1  # Limit for user avatar image size in MB
