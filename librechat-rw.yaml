@@ -18,7 +18,7 @@ endpoints:
    capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
 
   custom:
-    - name: "OpenAi"
+    - name: "OpenAI"
       apiKey: "${OPENAI_API_KEY}"
       baseURL: "https://api.openai.com/v1/"
       models:
@@ -97,8 +97,31 @@ fileConfig:
        - "application/json"
        - "application/xml"
    openAI:
+     fileLimit: 5
+     fileSizeLimit: 10  # Maximum size for an individual file in MB
+     totalSizeLimit: 20  # Maximum total size for all files in a single request in MB
+     supportedMimeTypes:
+       - "image/.*"
+       - "application/pdf"
+       - "text/plain"
+       - "text/csv"
+       - "application/json"
+       - "application/xml"
      disabled: false
    default:
      totalSizeLimit: 20
+   perplexity:
+     fileLimit: 5
+     fileSizeLimit: 10  # Maximum size for an individual file in MB
+     totalSizeLimit: 20  # Maximum total size for all files in a single request in MB
+     supportedMimeTypes:
+       - "image/.*"
+       - "application/pdf"
+       - "text/plain"
+       - "text/csv"
+       - "application/json"
+       - "application/xml"
+
+
  serverFileSizeLimit: 100  # Global server file size limit in MB
  avatarSizeLimit: 1  # Limit for user avatar image size in MB
