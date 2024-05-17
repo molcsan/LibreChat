@@ -13,7 +13,7 @@ endpoints:
    disableBuilder: false
    pollIntervalMs: 750
    timeoutMs: 180000
-   excludedIds: []
+   excludedIds: ['asst_excludedAssistantId1']
    capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
 
 #
