@@ -16,14 +16,6 @@ endpoints:
    excludedIds: ['asst_excludedAssistantId1']
    capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
 
-#
-#   openAI:
-#     apiKey: "${OPENAI_API_KEY}"
-#     baseURL: "https://api.openai.com/v1/"
-#     models:
-#       default: [ "gpt-4-turbo", "gpt-4o", "gpt-3.5-turbo" ]
-#       fetch: false
-
   custom:
     - name: "Perplexity"
       apiKey: "${PERPLEXITY_API_KEY}"
@@ -124,3 +116,22 @@ fileConfig:
 
  serverFileSizeLimit: 100  # Global server file size limit in MB
  avatarSizeLimit: 1  # Limit for user avatar image size in MB
+
+modelSpecs:
+ enforce: true
+ prioritize: true
+ list:
+   - name: "gpt-4o"
+     label: "GPT-4 Omega"
+     description: "Newest and most advanced model."
+     order: 1
+
+   - name: "gpt-4-turbo-preview"
+     label: "GPT-4"
+     description: "Advanced model for complex tasks
+     order: 2
+     
+    - name: "gpt-3-turbo"
+      label: "GPT-3"
+      description: "Newest and most advanced model."
+      order: 3
