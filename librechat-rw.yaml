@@ -13,19 +13,17 @@ endpoints:
    disableBuilder: false
    pollIntervalMs: 750
    timeoutMs: 180000
-   supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
-   retrievalModels: ["gpt-4o"]
+   excludedIds: []
    capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
 
-  custom:
-    - name: "OpenAI"
-      apiKey: "${OPENAI_API_KEY}"
-      baseURL: "https://api.openai.com/v1/"
-      models:
-        default: ["gpt-4-turbo", "gpt-4o", "gpt-3.5-turbo"]
-        fetch: false
-      modelDisplayLabel: "OpenAI"
+   openAI:
+     apiKey: "${OPENAI_API_KEY}"
+     baseURL: "https://api.openai.com/v1/"
+     models:
+       default: [ "gpt-4-turbo", "gpt-4o", "gpt-3.5-turbo" ]
+       fetch: false
 
+  custom:
     - name: "Perplexity"
       apiKey: "${PERPLEXITY_API_KEY}"
       baseURL: "https://api.perplexity.ai/"
