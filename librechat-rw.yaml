@@ -2,12 +2,6 @@ version: 1.0.9
 
 cache: true
 
-registration:
-  socialLogins: ['github', 'google']
-  allowedDomains:
-    - "dajanarodriguez.com"
-    - "dajanarodriguez.sk"
-
 endpoints:
   assistants:
    disableBuilder: false
@@ -128,10 +122,10 @@ modelSpecs:
 
    - name: "gpt-4-turbo-preview"
      label: "GPT-4"
-     description: "Advanced model for complex tasks
+     description: "Advanced model for complex tasks"
      order: 2
      
-    - name: "gpt-3-turbo"
-      label: "GPT-3"
-      description: "Newest and most advanced model."
-      order: 3
+   - name: "gpt-3-turbo"
+     label: "GPT-3"
+     description: "Newest and most advanced model."
+     order: 3
